@@ -4,7 +4,7 @@
         <meta charset="utf-8" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>LINE Dashboard</title>
+        <title>LINE Encryption</title>
         <link rel="icon" type="image/x-icon" href="/LINE/assets/LINE_logo.webp" />
         <!-- CSS -->
         <link rel='stylesheet' href='//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css'><link rel="stylesheet" href="/LINE/css/dashboard.css">
@@ -15,8 +15,18 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
         <!-- Font Awesome -->
         <script src="https://kit.fontawesome.com/9b65a345ec.js" crossorigin="anonymous"></script>
+        <!-- 暗号化 -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+        <!-- JSファイルの読み込み -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
+        <!-- code tag -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/dracula.min.css">
+        <script>
+        // ハイライトを実行
+        hljs.initHighlightingOnLoad();
+        </script>
     </head>
-    <body>
+    <body class="body">
         <!-- Menu Bar -->
         <div>
             <aside class="sidebar">
@@ -106,9 +116,76 @@
         <!-- text -->
         <main class="main">
             <div class="main-bar">
-                <div style="text-align: center;">
-                    <h1> Dashboard </h1>
+                <div style="text-align: center; font-size: 20pt;">
+                    <h1>Encryption & restoration</h1>
                 </div>
+                <div>
+                    <!-- encode form -->
+                    <div>
+                        <h1>Encryption</h1>
+                        <div>
+                            <p>
+                                <label for="input-1-1" class="input-1  label">Encryption Text</label>
+                                <input type="text" class="input-1-1" id="data1" required="required" placeholder="Hello world!">
+                            </p>
+                            <p>
+                                <label for="input-1-1" class="input-1  label">Passphrase</label>
+                                <input type="text" class="input-1-1" name="pass_phrase1" id="pass_phrase1" required="required" placeholder="TEST0000">
+                            </p>
+                            <button class="cssbuttons-io" onclick="encode1()">
+                                <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"></path><path fill="currentColor" d="M24 12l-5.657 5.657-1.414-1.414L21.172 12l-4.243-4.243 1.414-1.414L24 12zM2.828 12l4.243 4.243-1.414 1.414L0 12l5.657-5.657L7.07 7.757 2.828 12zm6.96 9H7.66l6.552-18h2.128L9.788 21z"></path></svg>Encryption</span>
+                            </button>
+                        </div>
+                        <pre><code style="background-color: #25292f" id="output1" class="text">key :<br>data :<br>encrypted :</code></pre>
+                    </div>
+                    <br>
+                    <!-- decode form -->
+                    <div>
+                        <h1>restoration</h1>
+                        <div>
+                            <p>
+                                <label for="input-1-1" class="input-1  label">Encryption data</label>
+                                <input type="text" class="input-1-1" id="data2" required="required" placeholder="U2FsdGVkX18sr6JeXWagDVzby0xRwMGDzNdAgIKN8ws=" >
+                            </p>
+                            <p>
+                                <label for="input-1-1" class="input-1  label">Passphrase</label>
+                                <input type="text" class="input-1-1" name="pass_phrase2" id="pass_phrase2" required="required" placeholder="TEST0000">
+                            </p>
+                            <button class="cssbuttons-io" onclick="decode2()">
+                                <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"></path><path fill="currentColor" d="M24 12l-5.657 5.657-1.414-1.414L21.172 12l-4.243-4.243 1.414-1.414L24 12zM2.828 12l4.243 4.243-1.414 1.414L0 12l5.657-5.657L7.07 7.757 2.828 12zm6.96 9H7.66l6.552-18h2.128L9.788 21z"></path></svg>restoration</span>
+                            </button>
+                        </div>
+                        <pre><code style="background-color: #25292f" id="output2" class="text">key :<br>decrypted :</code></pre>
+                    </div>
+                    <br>
+                    <!-- UUID form -->
+                    <div>
+                        <h1>UUID</h1>
+                        <button class="cssbuttons-io" onclick="createUuid()">
+                            <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"></path><path fill="currentColor" d="M24 12l-5.657 5.657-1.414-1.414L21.172 12l-4.243-4.243 1.414-1.414L24 12zM2.828 12l4.243 4.243-1.414 1.414L0 12l5.657-5.657L7.07 7.757 2.828 12zm6.96 9H7.66l6.552-18h2.128L9.788 21z"></path></svg>Generate</span>
+                        </button>
+                        <pre><code style="background-color: #25292f" id="uuid" class="language-uuid">UUID :</code></pre>
+                    </div>
+                    <br>
+                    <!-- getJSON form -->
+                    <div>
+                        <h1>JSON</h1>
+                        <div>
+                            <p>
+                                <label for="input-1-1" class="input-1  label">JSON URL</label>
+                                <input type="url" class="input-1-1" id="jsonURL" required="required" placeholder="https://jsonplaceholder.typicode.com/todos/1">
+                            </p>
+                            <button class="cssbuttons-io" onclick="getJSON()">
+                                <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"></path><path fill="currentColor" d="M24 12l-5.657 5.657-1.414-1.414L21.172 12l-4.243-4.243 1.414-1.414L24 12zM2.828 12l4.243 4.243-1.414 1.414L0 12l5.657-5.657L7.07 7.757 2.828 12zm6.96 9H7.66l6.552-18h2.128L9.788 21z"></path></svg>GET</span>
+                            </button>
+                        </div>
+                        <pre><code style="background-color: #25292f" id="getJsonData" class="language-json">json data</code></pre>
+                    </div>
+                </div>
+                <footer style="text-align: center;">
+                    <h1>Encrypt program version 1.0</h1>
+                    <br>
+                </footer>
             </div>
         </main>
     </body>
