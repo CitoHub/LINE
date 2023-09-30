@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" >
+    <head>
+        <meta charset="utf-8" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>LINE Sign Up</title>
+        <link rel="icon" type="image/x-icon" href="/LINE/assets/LINE_logo.webp" />
+        <!-- CSS -->
+        <link rel='stylesheet' href='//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css'><link rel="stylesheet" href="/LINE/css/dashboard.css">
+        <link rel="stylesheet" href="/LINE/css/account.css">
+        <!-- JS -->
+        <script src="/LINE/js/ang.js"></script>
+        <script src="/LINE/js/data.js"></script>
+        <!---->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+        <!-- Font Awesome -->
+        <script src="https://kit.fontawesome.com/9b65a345ec.js" crossorigin="anonymous"></script>
+        <!-- 暗号化 -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+        <!-- JSファイルの読み込み -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
+        <!-- code tag -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/dracula.min.css">
+        <script>
+        // ハイライトを実行
+        hljs.initHighlightingOnLoad();
+        </script>
+    </head>
+    <body>
+        <main class="main-55">
+            <div class="form">
+                <span class="signup">Sign Up</span>
+                <input type="email" id="formEmail" name="formEmail" placeholder="Email" class="form--input">
+                <input type="password" id="formPassword" name="formPassword" placeholder="Password" class="form--input">
+                <input type="password" placeholder="Confirm Password" class="form--input">
+
+                <div class="form--marketing">
+                    <input id="okayToEmail" type="checkbox">
+                    <label for="okayToEmail" class="checkbox">I agree to the terms of use.</label>
+                </div>
+                <button class="form--submit" onclick="singUpDataEncode()">Sign Up</button>
+                <button style="color: #000; background-color: #ffffff; outline: none; border: none; position: absolute; bottom: 1.5%; left: 1.5%;">
+                    <a href="/LINE/dashboardt/en.html">back</a>
+                </button>
+            </div>
+        </main>
+    </body>
+</html>

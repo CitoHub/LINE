@@ -1,0 +1,441 @@
+@charset "UTF-8";
+
+:root {
+    --bs-blue: #0d6efd;
+    --bs-indigo: #6610f2;
+    --bs-purple: #7464a1;
+    --bs-pink: #d63384;
+    --bs-red: #a16468;
+    --bs-orange: #fd7e14;
+    --bs-yellow: #e4c662;
+    --bs-green: #67c29c;
+    --bs-teal: #64a19d;
+    --bs-cyan: #1cabc4;
+    --bs-black: #000;
+    --bs-white: #fff;
+    --bs-gray: #6c757d;
+    --bs-gray-dark: #343a40;
+    --bs-gray-100: #f8f9fa;
+    --bs-gray-200: #e9ecef;
+    --bs-gray-300: #dee2e6;
+    --bs-gray-400: #ced4da;
+    --bs-gray-500: #adb5bd;
+    --bs-gray-600: #6c757d;
+    --bs-gray-700: #495057;
+    --bs-gray-800: #343a40;
+    --bs-gray-900: #212529;
+    --bs-primary: #64a19d;
+    --bs-secondary: #7464a1;
+    --bs-success: #67c29c;
+    --bs-info: #1cabc4;
+    --bs-warning: #e4c662;
+    --bs-danger: #a16468;
+    --bs-light: #f8f9fa;
+    --bs-dark: #212529;
+    --bs-black: #000;
+    --bs-white: #fff;
+    --bs-primary-rgb: 100, 161, 157;
+    --bs-secondary-rgb: 116, 100, 161;
+    --bs-success-rgb: 103, 194, 156;
+    --bs-info-rgb: 28, 171, 196;
+    --bs-warning-rgb: 228, 198, 98;
+    --bs-danger-rgb: 161, 100, 104;
+    --bs-light-rgb: 248, 249, 250;
+    --bs-dark-rgb: 33, 37, 41;
+    --bs-black-rgb: 0, 0, 0;
+    --bs-white-rgb: 255, 255, 255;
+    --bs-white-rgb: 255, 255, 255;
+    --bs-black-rgb: 0, 0, 0;
+    --bs-body-color-rgb: 33, 37, 41;
+    --bs-body-bg-rgb: 255, 255, 255;
+    --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
+    --bs-body-font-family: Nunito, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+    --bs-body-font-size: 1rem;
+    --bs-body-font-weight: 400;
+    --bs-body-line-height: 1.5;
+    --bs-body-color: #212529;
+    --bs-body-bg: #fff;
+    --bs-border-width: 1px;
+    --bs-border-style: solid;
+    --bs-border-color: #dee2e6;
+    --bs-border-color-translucent: rgba(0, 0, 0, 0.175);
+    --bs-border-radius: 0.375rem;
+    --bs-border-radius-sm: 0.25rem;
+    --bs-border-radius-lg: 0.5rem;
+    --bs-border-radius-xl: 1rem;
+    --bs-border-radius-2xl: 2rem;
+    --bs-border-radius-pill: 50rem;
+    --bs-link-color: #64a19d;
+    --bs-link-hover-color: #50817e;
+    --bs-code-color: #d63384;
+    --bs-highlight-bg: #faf4e0;
+}
+
+body {
+    margin: 0;
+    font-family: var(--bs-body-font-family);
+    font-size: var(--bs-body-font-size);
+    font-weight: var(--bs-body-font-weight);
+    line-height: var(--bs-body-line-height);
+    color: var(--bs-body-color);
+    text-align: var(--bs-body-text-align);
+    background-color: var(--bs-body-bg);
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    background-color: #f4f4f4;
+}
+
+h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+h1, .h1 {
+    font-size: calc(1.375rem + 1.5vw);
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+footer  {
+    padding: 0.5rem 1rem;
+    background-color: #efefef;
+}
+
+main {
+    margin-top: 5rem; /*上に空白を追加*/
+}
+
+
+
+
+
+
+/* メニューサイズ判断 */
+.for-pc { display:block; }
+.for-sp { display:none; }
+
+@media only screen and (max-width : 1079px){
+    .for-pc { display:none; }
+    .for-sp { display:block; }
+}
+
+/* PC **************************************************************************************************/
+
+#top-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    background: white;
+    display: flex;
+    align-items: center;
+    /* border-bottom: 1px solid #c4c4c4; */
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25);
+    z-index: 999;
+}
+
+/*******グローバルナビ********/
+.slideButton {
+    display: none;
+}
+#slideMenu {
+    position: relative;
+    width: 100%;
+    height: 40px;
+    background-color: #ffffff;/*メニューの背景色*/
+}
+#slideMenu > .slideMenuInner {
+    list-style-type: none;
+    width: 960px;/*メニューの横幅を*/
+    height: 100%;
+    margin: 0 auto;
+    padding-left: 0;
+}
+#slideMenu > .slideMenuInner li {
+    position: relative;
+    float: left;
+    height: 100%;
+    text-align: center;
+}
+#slideMenu > .slideMenuInner > li a {
+    display: block;
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    padding-right: 30px;/*文字の左の余白*/
+    padding-left: 30px;/*文字の右の余白*/
+    background-color: #ffffff;/*文字の背景色*/
+    color: #000000;/*文字色*/
+    font-size: 70%;
+    text-decoration: none;
+    line-height: 40px;
+}
+#slideMenu > .slideMenuInner > li:hover a {
+    background-color: #f4f4f4;/*文字の背景色（マウスホバー時）*/
+    color: #06c755;
+}
+/*２階層目*/
+#slideMenu > .slideMenuInner > li > ul.second-level {
+    visibility: hidden;
+    list-style-type: none;
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    margin: 0;
+    padding-left: 0;
+}
+#slideMenu > .slideMenuInner > li:hover > ul.second-level {
+    visibility: visible;
+    z-index: 1;
+    top: 40px;
+    transition: all .3s;
+}
+#slideMenu > .slideMenuInner > li:hover > ul.second-level > li {
+    width: 200px;
+    height: 40px;
+    text-align: center;
+}
+#slideMenu > .slideMenuInner > li:hover > ul.second-level > li > a {
+    display: block;
+    background-color: #ffffff;/*子メニューの文字の背景色*/
+    color: #000000;/*子メニューの文字色*/
+    font-size: 70%;
+    text-decoration: none;
+    line-height: 40px;
+}
+#slideMenu > .slideMenuInner > li:hover > ul.second-level > li > a:hover {
+    background-color: #f4f4f4;/*子メニューの背景色（マウスホバー時）*/
+    color:#06c755;
+}
+/*２階層目ここまで*/
+/******スライドメニュー*******/
+@media screen and (max-width:1079px) {/*１*/
+    #menuButton {
+        z-index: 10;
+        width: 100%;
+        background-color: #444;/*メニューバーの色*/
+        /** vertical-align: middle; **/
+    }
+    #menuButtonInner {
+        position: relative;
+        width: 100%;
+        background-color: #ffffff;/*メニューバーの色*/
+        margin: 0 auto;
+        text-align: right;
+    }
+    #slideMenu {
+        overflow-x: hidden;
+        overflow-y: auto;
+        position: absolute;
+        z-index: 20;
+        top: 0;
+        right: -260px;
+        width: 260px;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);
+    }
+    #slideMenu > .slideMenuInner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+    #slideMenu > .slideMenuInner > li {
+        display: block;
+        position: relative;
+        float: none;
+        width: 100%;
+        height: 40px;
+        margin: 0 auto;
+        border-top: 1px solid #eee;
+        text-align: center;
+    }
+    #slideMenu > .slideMenuInner > li a {
+        display: block;
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        background-color: #fff;/*スライドメニューの背景色*/
+        color: #333;/*スライドメニューの文字色*/
+        font-size: 70%;
+        font-weight: bold;
+        line-height: 40px;
+    }
+    #slideMenu > .slideMenuInner > li:hover a {
+        background-color: #f4f4f4;/*スライドメニューの背景色（マウスホバー時）*/
+        color: #06c755;/*スライドメニューの文字色（マウスホバー時）*/
+    }
+    #slideMenu > .slideMenuInner > li > a:active {
+        opacity: .8;
+    }
+    #slideMenu > .slideMenuInner > li:hover > ul.second-level {
+        display: none;
+    }
+    .closeArea {
+        height: 100%;
+        background-color: #333;/*クローズエリア（スライドメニューの下の部分）の色*/
+        cursor: pointer;
+    }
+    #layer {
+        display: none;
+        position: sticky;
+        z-index: 10;
+        top: 0;
+        width: 100%;
+        height: 150%;
+        background-color: #222;/*レイヤーの色*/
+        opacity: .4;/*レイヤーの透明度*/
+        cursor: pointer;
+    }
+}
+
+
+
+/* Mobile **********************************************************************************************/
+
+#top-header-mini{
+    position: sticky;
+    top: 0;
+    padding: 20px;
+    background: white;
+    display: flex;
+    z-index: 999;
+}
+
+/*
+#top-header {
+    position: sticky;
+    top: 0;
+    padding: 20px;
+    background: white;
+    display: flex;
+    align-items: center;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25);
+    z-index: 999;
+}
+*/
+
+/* reset */
+
+.nav-position{
+    position: fixed;
+    top: 0;
+}
+
+*   {
+        margin: 0;
+        padding: 0;
+    }
+
+    #wrapper {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+
+    label {
+        cursor: pointer;
+    }
+    label:focus {
+        outline: none;
+    }
+
+    .menu {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: #fffffff3;/* メニュー背景カラー */
+        width: 240px;
+        height: 100%;
+        transform: translate3d(-240px, 0, 0);
+        transition: transform 0.35s;
+    }
+    .menu label.menu-toggle {
+        position: absolute;
+        right: -60px;
+        width: 60px;
+        height: 60px;
+        line-height: 0px;
+        display: block;
+        padding: 0;
+        text-indent: -9999px;
+        /* box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25); */
+        background: #fcfcfce8 url(https://cdn4.iconfinder.com/data/icons/wirecons-free-vector-icons/32/menu-alt-512.png) 50% 50%/25px 25px no-repeat;
+    }
+    .menu ul li > label {
+        background-color: #06c755;
+        background: url(https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-arrow-right-b-128.png) 95% 50%/16px 16px no-repeat;
+    }
+    .menu ul li a, .menu ul li label {
+        display: block;
+        text-align: center;
+        padding: 0 20px;
+        line-height: 60px;
+        text-decoration: none;
+        color: #000000;/* テキストカラー */
+    }
+    .menu ul li a:hover, .menu ul li label:hover {
+        color: #66666615;
+    }
+    .menu ul li a:hover, .menu ul li label:hover {
+        color: #06c755;/* マウスホバー テキストカラー*/
+        background-color: #f4f4f4;/* マウスホバー 背景カラー*/
+    }
+
+    /* hide inputs */
+    .menu-checkbox {
+        display: none;
+    }
+
+    /* hide navigation icon for sublabels */
+    .menu .menu label.menu-toggle {
+        background: none;
+    }
+
+    .menu .menu label.menu-toggle:hover{
+        background: #ffffff6a;
+    }
+
+    /* fade in checked menu */
+    .menu-checkbox:checked + .menu {
+        transform: translate3d(0, 0, 0);
+    }
+
+    #info {
+        display: table;
+        height: 100%;
+        width: 100%;
+    }
+    #info #info-content {
+        display: table-cell;
+        vertical-align: middle;
+        text-align: center;
+        text-transform: uppercase;
+        color: #fff;
+        font-size: 12px;
+    }
+    #info #info-content h1 {
+        color: #fff;
+        border: 3px solid #fff;
+        text-align: center;
+        background: rgba(0, 0, 0, 0.1);
+        font-size: 22px;
+        font-weight: normal;
+        padding: 20px;
+        margin: 10px;
+        display: inline-block;
+    }
+    #info #info-content h1 strong {
+        display: block;
+        font-size: 26px;
+    }
